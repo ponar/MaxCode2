@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Postój maszyny</title>
+</h:head>
+<h:body>
+	<!-- onkeypress="return event.keyCode != 13" -->
+	<h:form id="postoj" >
+		<p:panel id="postoj" header="Postój maszyny"
+			footer="Projekt wykonał: Jarosław Zyzak">
+			<p:focus context="postoj"/> 
+			<h:outputLabel value="Stanowisko "></h:outputLabel>
+			<p:inputText id="stanowisko" value="#{serviceLocator.stanowisko}"
+				required="true" autocomplete="off" requiredMessage="Proszę zeskanować kod stanowiska" style="text-transform: uppercase"></p:inputText>
+			<p:message for="stanowisko">
+			</p:message>
+			<p></p>
+			<p></p>
+			<h:outputText value="Wybierz powód postoju: " />
+			<h:selectOneRadio value="#{serviceLocator.moj_wybor}"
+				layout="pageDirection">
+				<f:selectItem itemValue="Awaria maszyny" itemLabel="Awaria maszyny" />
+				<f:selectItem itemValue="Brak narzędzia" itemLabel="Brak narzędzia" />
+				<f:selectItem itemValue="Konserwacja maszyny" itemLabel="Konserwacja maszyny" />
+				<!--  <f:selectItem itemValue="Przerwanie postoju" itemLabel="Przerwanie postoju" /> -->
+				<f:selectItem itemValue="Brak roboty" itemLabel="Brak roboty" />
+				<f:selectItem itemValue="Inne" itemLabel="Inne" />
+			</h:selectOneRadio>
+			<h:outputLabel value="Pracownik "/>
+			<p:inputText id="pracownik" value="#{serviceLocator.pracownik}" autocomplete="off" style="text-transform: uppercase"></p:inputText>
+			<p>
+				<p:commandButton id="zatwierdzenie" value="Zatwierdzenie postoju"
+					action="#{serviceLocator.postoj}" />
+				<p:button outcome="panel" value="Powrót do panelu">
+					<f:param name="panel" />
+					<f:metadata>
+						<f:viewParam name="panel" value="#{serviceLocator.panel}" />
+					</f:metadata>
+				</p:button>
+			</p>
+
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

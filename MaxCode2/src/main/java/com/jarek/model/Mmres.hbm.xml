@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-05-21 10:32:25 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.jarek.model.Mmres" table="mmres">
+        <id name="mmres_resid" type="java.lang.String">
+            <column name="mmres_resid" />
+            <generator class="assigned" />
+        </id>
+    </class>
+</hibernate-mapping>

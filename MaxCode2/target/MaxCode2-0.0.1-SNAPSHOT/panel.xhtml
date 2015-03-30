@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>Panel Operatorski</title>
+
+</h:head>
+<h:body>
+<h:outputStylesheet library="css" name="style.css"/>
+<h:form>
+<h1 align="center">Panel operatorski</h1>
+<div align="center">
+
+<p>
+<h:commandButton  value="Rozpoczęcie operacji" style="width:450px;color: #0000FF;" action="poczatek" class="button" />
+                 </p>
+<p><h:commandButton value="Przerwanie operacji/postoju" style="width:450px;color: #0000FF;" action="przerwa" class="button"/></p>      
+<p><h:commandButton value="Kontynuowanie operacji" style="width:450px;color: #0000FF;" action="kontynuacja" class="button"/></p>
+<p><h:commandButton value="Ilość sztuk" style="width:450px;color: #0000FF;" action="ilosc" class="button"/></p>
+<p><h:commandButton value="Zakończenie operacji"  style="width:450px;color: #0000FF;" action="koniec" class="button"/></p>    
+<p><h:commandButton value="Postój maszyny"  style="width:450px;color: #0000FF;" action="postoj" class="button"/></p>
+<p><h:commandButton value="Sprawdzenie operacji w zleceniu"  style="width:450px;color: #0000FF;" action="check" class="button"/></p>
+<p><h:commandButton value="Wyjście"  style="width:450px;color: #0000FF;" action="#{serviceLocator.exit}" class="button"/></p>
+
+</div>
+</h:form>
+<br />
+<br />
+<br />
+<br />
+<hr />
+
+	<div align="center">
+<small>Projekt wykonał: Jarosław Zyzak Ponar Sp. z o. o.</small>
+</div>
+</h:body>
+
+</html>

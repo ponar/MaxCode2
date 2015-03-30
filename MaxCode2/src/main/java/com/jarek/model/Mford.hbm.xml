@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-07-04 11:08:16 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.jarek.model.Mford" table="mford">
+        <id name="mford_orderno" type="java.lang.String">
+            <column name="mford_orderno" />
+            <generator class="assigned" />
+        </id>
+        <property name="mford_dueqty" type="float">
+            <column name="mford_dueqty" />
+        </property>
+        <property name="mford_qtyrcvd" type="float">
+            <column name="mford_qtyrcvd" />
+        </property>
+    </class>
+</hibernate-mapping>

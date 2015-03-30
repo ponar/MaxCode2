@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<script type="text/javascript" src="js/jquery-ui-1.8.11.custom.min.js"></script>
+	
+	 <!--
+ 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ 	-->
+<h:head>
+        <title>Sprawdzenie zlecenia</title>
+    </h:head>
+    <h:body>
+    	  <h:form id="check" >
+    	  <div align="center">
+    	  	<p><h2>Zeskanuj kod zlecenia do sprawdzenia i wciśnij klawisz 'Wyświetl'</h2></p>
+            <p>  <p:inputText id="zlecenie" value="#{serviceLocator.zlecenie}" autocomplete="off" style="text-transform: uppercase"/></p>
+            <p:commandButton value="Wyświetl" action="#{serviceLocator.wyswietla}" update="tabelka" />
+			            
+            <p:commandButton id="czyszczenie" value="Czyszczenie pól"
+						action="#{serviceLocator.czyszczenie}" ajax="false" />  
+       					                     
+            <p:button outcome="index" value="Powrót do panelu">
+			<f:param name="index" />
+			<f:metadata>
+				<f:viewParam name="index" value="#{serviceLocator.index}" />
+			</f:metadata>
+			</p:button>
+            <p></p>
+            <p></p>
+          	
+            <p:panelGrid columns="2">
+                <h:dataTable id="tabelka" var="item" value="#{serviceLocator.lista}" border="2">
+                    <p:column>
+                        <f:facet name="header">Zlecenie</f:facet>         
+                        <h:outputText value="#{item.zlecenie}" />  
+                    </p:column>
+                    <p:column>
+                    	<f:facet name="header">Nr. operacji</f:facet>
+                    	<h:outputText value="#{item.nr_operacji}"/>
+                    </p:column>
+                    <p:column>
+                    	<f:facet name="header">Typ operacji</f:facet>
+                    	<h:outputText value="#{item.kod_czynnosc=='A'?'Rozpoczęcie operacji':' ' } "/>
+                    	<h:outputText value="#{item.kod_czynnosc=='B'?'Zatrzymanie operacji':' ' } "/>
+                    	<h:outputText value="#{item.kod_czynnosc=='C'?'Kontynuacja operacji':' ' } "/>
+                    	<h:outputText value="#{item.kod_czynnosc=='D'?'Zakończenie operacji':' ' } "/>
+                		<h:outputText value="#{item.kod_czynnosc=='S'?'Rejestracja ilości sztuk':' ' } "/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Pracownik
+                        </f:facet>
+                        <h:outputText value="#{item.kod_rcp}"/>
+                    </p:column>
+                    <p:column>
+                    	<f:facet name="header">
+                    		Data otwarcia
+                    	</f:facet>
+                    	<h:outputText value="#{item.formatDaty_otwarcia}"/>
+                    </p:column>
+                    <p:column>
+                    	<f:facet name="header">
+                    		Godzina otwarcia
+                    	</f:facet>
+                    	<!-- <h:outputText value="#{item.convertlongtoString}"/> -->
+                    	<h:outputText value="#{item.convertlongtoString_otwarcia}"/>
+                    </p:column>
+                     <p:column>
+                    	<f:facet name="header">
+                    		Data zakończenia
+                    	</f:facet>
+                    	<h:outputText value="#{item.formatDaty_zamkniecia}"/>
+                    </p:column>
+                     <p:column>
+                    	<f:facet name="header">
+                    		Godzina zakończenia
+                    	</f:facet>
+                    	<h:outputText value="#{item.convertlongtoString_zamkniecia}"/>
+                    </p:column>
+                </h:dataTable>
+            </p:panelGrid>
+           
+            </div>
+           <script>
+			    $ = jQuery;
+			    // Then you can use it
+			    $(document).ready(function() {
+			       
+			    	$(".slidingDiv").hide();
+			        $(".show_hide").show();
+			 
+				    $('.show_hide').click(function(){
+				    $(".slidingDiv").slideToggle();
+				    });
+			    });
+			</script>
+			
+            <a href="#" class="show_hide">Pokaż legendę</a>
+			<div class="slidingDiv">
+			  <p><h2>LEGENDA:</h2></p>
+            <p>Typ operacji:</p>
+            <p>A - rozpoczęcie operacji</p>
+            <p>B- zatrzymanie operacji</p>
+            <p>C- kontynuacja operacji</p>
+            <p>D - zatrzymanie operacji</p>
+            <p>S - wprowadzona ilość</p> 
+			<a href="#" class="show_hide">Ukryj lęgęndę</a>
+			</div>
+
+          
+        </h:form>
+    	 
+    </h:body>
+
+</html>

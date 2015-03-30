@@ -1,0 +1,5 @@
+com\jarek\controller\ServiceLocator.class
+com\jarek\utils\HibernateUtil.class
+com\jarek\model\Uczynnosci.class
+com\jarek\model\Mford.class
+com\jarek\model\Mmres.class

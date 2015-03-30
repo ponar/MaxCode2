@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Wprowadź ilość sztuk</title>
+</h:head>
+<h:body>
+
+	<h:form id="ilosc">
+	<p:focus context="start"/> 
+		<div align="center">
+			<p:panel id="start" header="Wprowadź ilość sztuk wykonywanych "
+				footer="Projekt wykonał: Jarosław Zyzak">
+				<p:focus context="start" />
+				<h:panelGrid columns="2"> 
+					
+					<h:outputLabel value="Stanowisko: "></h:outputLabel>
+					<p:inputText id="stanowisko" value="#{serviceLocator.stanowisko}"
+						required="true" autocomplete="off"
+						requiredMessage="Proszę zeskanować kod stanowiska" style="text-transform: uppercase"></p:inputText>
+					<p:message for="stanowisko">
+					</p:message>
+					<p></p>
+					<h:outputLabel value="Zlecenie (operacja): "></h:outputLabel>
+					<p:inputText id="zlecenie" value="#{serviceLocator.zlecenie}"
+						required="true" autocomplete="off"
+						requiredMessage="Proszę zeskanować kod zlecenia z przewodnika" style="text-transform: uppercase"></p:inputText>
+					<p:message for="zlecenie"></p:message>
+					<p></p>
+					<p:commandButton value="Pokaź sztuki na zleceniu"
+						action="#{serviceLocator.ilosc}" update="tab" />
+					<p:commandButton id="reset" value="Czyszczenie pól"
+						action="#{serviceLocator.reset}" ajax="false" />
+					<p:button outcome="index" value="Powrót do panelu">
+					<f:param name="index" />
+					<f:metadata>
+						<f:viewParam name="index" value="#{serviceLocator.index}" />
+					</f:metadata>
+					</p:button>
+		            <p></p>
+		            <p></p>
+          	 
+				</h:panelGrid>
+			 </p:panel> 
+				<p:dataTable id="tab" var="mf" value="#{serviceLocator.wyjsciowa_ilosc}"
+						border="2">
+						<p:column id="modelHeader">
+							<f:facet name="header">  
+                        Zlecenie  
+                    </f:facet>
+							<h:outputText value="#{mf.mford_orderno}" style="width: 300px;" />
+						</p:column>
+					<p:column>
+						<f:facet name="header">
+                        Ilość na zleceniu
+                    </f:facet>
+						<h:outputText value="#{mf.mford_dueqty}" style="width: 300px;"
+							converter="javax.faces.Integer" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+						Ilość wykonana (Suma wykonana)
+						</f:facet>
+						<!-- 
+						<h:outputText value="#{mf.mford_qtyrcvd}" style="width: 300px;" converter="javax.faces.Integer" />
+						-->
+						<h:outputText value="#{serviceLocator.suma_wykona}" style="width: 300px;" converter="javax.faces.Integer" />
+						
+					</p:column>
+					<p:column>
+                    <f:facet name="header">
+                    </f:facet>
+                    Wpisz liczbę sztuk: 
+                    <h:inputText value="#{serviceLocator.input_user}" converter="javax.faces.Integer"
+                                                     maxlength="2" >
+                                                    
+                                                     </h:inputText>
+                    <p:commandButton value="Potwierdź" action="#{serviceLocator.wprowadz}"/>
+                </p:column>
+					</p:dataTable>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+	</h:form>
+
+</h:body>
+</html>

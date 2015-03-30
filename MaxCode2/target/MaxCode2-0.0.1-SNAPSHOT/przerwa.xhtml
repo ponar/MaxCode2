@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Przerwanie operacji</title>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+</h:head>
+<h:body>
+ 	<script type="text/javascript">
+	 var myVar;
+	 var myVar2;
+	 var myVar3;
+		 function myFunction()
+		 {
+		 myVar=setTimeout(function(){ przerwaDialog.hide()},16000);
+		 myVar2=setTimeout(function(){ nieprzerwaDialog.hide()},16000);
+		 myVar3=setTimeout(function(){ odblokowanie.hide()},16000);
+		 }
+
+		 function myStopFunction()
+		 {
+		 clearTimeout(myVar);
+		 clearTimeout(myVar2);
+		 clearTimeout(myVar3);
+		 }
+	 </script>
+	<!-- onkeypress="return event.keyCode != 13" -->
+	<h:form id="stan2" >
+	
+		<p:panel id="przerwa" header="Przerwanie operacji"
+			footer="Projekt wykonał: Jarosław Zyzak">
+			<h:panelGrid columns="3">
+				<p:focus context="przerwa" />
+				<h:outputLabel value="Stanowisko"></h:outputLabel>
+				<p:inputText id="stanowisko" value="#{serviceLocator.stanowisko}"
+					required="true" autocomplete="off"
+					requiredMessage="Proszę zeskanować kod stanowiska" style="text-transform: uppercase"></p:inputText>
+				<p:message for="stanowisko">
+				</p:message>
+
+				<h:outputLabel value="Zlecenie (operacja)"></h:outputLabel>
+				<p:inputText id="zlecenie" value="#{serviceLocator.zlecenie}"
+					required="true" autocomplete="off"
+					requiredMessage="Proszę zeskanować kod zlecenia z przewodnika" style="text-transform: uppercase"></p:inputText>
+				<p:message for="zlecenie"></p:message>
+				
+				<p>Proszę wybrać powód przerwania zlecenia</p>
+				<h:selectOneRadio value="#{serviceLocator.moj_wybor_przerwy}"
+				layout="pageDirection">
+				<f:selectItem itemValue="Koniec zmiany" itemLabel="Koniec zmiany" />
+				<f:selectItem itemValue="Zmiana zlecenia" itemLabel="Zmiana zlecenia" />
+				<f:selectItem itemValue="Oczekiwanie na suwnice" itemLabel="Oczekiwanie na suwnice" />
+				<f:selectItem itemValue="Inne" itemLabel="Inne" />
+				<f:selectItem itemValue="Awaria" itemLabel="Awaria" />
+			</h:selectOneRadio>
+			</h:panelGrid>
+		</p:panel>
+		<p></p>
+		<p></p>
+		<p></p>
+			
+		<p:commandButton value="Przerwanie zlecenia"
+			action="#{serviceLocator.przerwane_zlecenie}" />
+		<p:commandButton id="reset" value="Reset"
+			action="#{serviceLocator.reset}" ajax="false" />
+			<!-- outcome="index" -->
+		<p:commandButton id="powrot" value="Powrót do panelu" action="#{serviceLocator.powrot}" ajax="false"/>
+			<!-- 
+			<f:param name="index" />
+			<f:metadata>
+				<f:viewParam name="index" value="#{serviceLocator.klik}" />
+			</f:metadata>
+		</p:button>
+			 -->
+		
+          <p:dialog id="dialog1" widgetVar="przerwaDialog" onShow="myFunction();" onHide="myStopFunction();">
+        		<p:outputLabel value="Zlecenie zostało przerwane!"></p:outputLabel>
+   	 	 </p:dialog>
+	
+		<p:dialog id="dialog2" widgetVar="nieprzerwaDialog" onShow="myFunction();" onHide="myStopFunction();">
+		        <p:outputLabel value="Zlecenia nie można przerwać!!!"></p:outputLabel>
+		</p:dialog>
+		
+		<p:dialog id="dialog3" widgetVar="odblokowanie" onShow="myFunction();" onHide="myStopFunction();">
+		        <p:outputLabel value="Odblokowanie zlecenia!"></p:outputLabel>
+		</p:dialog>
+		
+	
+	</h:form>
+</h:body>
+</html>

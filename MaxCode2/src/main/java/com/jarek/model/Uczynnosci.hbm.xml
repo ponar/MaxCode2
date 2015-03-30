@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-05-21 10:29:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.jarek.model.Uczynnosci" table="uczynnosci">
+        <id name="id" type="int" access="field">
+            <column name="id" />
+            <generator class="native" /> 
+        </id>
+        <property name="kod_czynnosc" type="java.lang.String" access="field">
+            <column name="kod_czynnosc" />
+        </property>
+        <property name="zlecenie" type="java.lang.String" access="field">
+            <column name="zlecenie" />
+        </property>
+        <property name="nr_operacji" type="java.lang.String" access="field">
+            <column name="nr_operacji" />
+        </property>
+        <property name="kod_stanowiska" type="java.lang.String" access="field">
+            <column name="kod_stanowiska" />
+        </property>
+        <property name="data_otw" type="java.util.Date" access="field">
+            <column name="data_otw" />
+        </property>
+        <property name="godz_otw" type="long" access="field">
+            <column name="godz_otw" />
+        </property>
+        <property name="data_zak" type="java.util.Date" access="field">
+            <column name="data_zak" />
+        </property>
+        <property name="godz_zak" type="long" access="field">
+            <column name="godz_zak" />
+        </property>
+        <property name="kod_rcp" type="java.lang.String" access="field">
+            <column name="kod_rcp" />
+        </property>
+        <property name="komentarz" type="java.lang.String" access="field">
+            <column name="komentarz" />
+        </property>
+        <property name="il" type="int" >
+        	<column name="il" />
+        </property>
+    </class>
+</hibernate-mapping>

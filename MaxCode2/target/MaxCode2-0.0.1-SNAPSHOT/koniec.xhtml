@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Zakończenie operacji</title>
+</h:head>
+<h:body>
+
+	<script type="text/javascript">
+	 var myVar;
+	 var myVar2;
+	 
+		 function myFunction()
+		 {
+		 myVar=setTimeout(function(){ niekoniecDialog1.hide()},16000);
+		 myVar2=setTimeout(function(){ koniecDialog0.hide()},16000);
+		 
+		 }
+
+		 function myStopFunction()
+		 {
+		 clearTimeout(myVar);
+		 clearTimeout(myVar2);
+		 
+		 }
+	 </script>
+	 
+	<h:form id="stan2">
+		<p:panel id="koniec" header="Zakończenie operacji"
+			footer="Projekt wykonał: Jarosław Zyzak">
+			<p:focus context="koniec"/> 
+			<h:panelGrid columns="3">
+				<h:outputLabel value="Stanowisko"></h:outputLabel>
+				<p:inputText id="stanowisko" value="#{serviceLocator.stanowisko}"
+					required="true" autocomplete="off" requiredMessage="Proszę zeskanować kod stanowiska" style="text-transform: uppercase"></p:inputText>
+				<p:message for="stanowisko">
+				</p:message>
+
+				<h:outputLabel value="Zlecenie (operacja)"></h:outputLabel>
+				<p:inputText id="zlecenie" value="#{serviceLocator.zlecenie}"
+					required="true" autocomplete="off"
+					requiredMessage="Proszę zeskanować kod zlecenia z przewodnika" style="text-transform: uppercase"></p:inputText>
+				<p:message for="zlecenie"></p:message>
+	
+			</h:panelGrid>
+		</p:panel>
+		<p></p>
+		<p></p>
+		<p></p>
+	
+		<p:commandButton id="submit" value="Zakończenie zlecenia"
+			action="#{serviceLocator.zakonczenie}" />
+		<p:commandButton id="reset" value="Reset"
+			action="#{serviceLocator.reset}" ajax="false" />
+		 
+		 <p:button outcome="index" value="Powrót do panelu">
+			<f:param name="index" />
+			<f:metadata>
+				<f:viewParam name="index" value="#{serviceLocator.index}" />
+			</f:metadata>
+			</p:button>
+            <p></p>
+            <p></p>
+		<!-- dodanie okienek dialog --> 
+		<p:dialog id="dialog1" widgetVar="niekoniecDialog1" onShow="myFunction();" onHide="myStopFunction();">
+        	<p:outputLabel value="Zlecenie nie zostało zakończone!!!"></p:outputLabel>
+    	 </p:dialog>
+	
+		<p:dialog id="dialog2" widgetVar="koniecDialog0" onShow="myFunction();" onHide="myStopFunction();">
+        	<p:outputLabel value="Zlecenia zostało zakończone!"></p:outputLabel>
+    	</p:dialog>
+		 
+	</h:form>
+</h:body>
+</html>

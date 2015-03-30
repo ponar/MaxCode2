@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Indentyfikacja pracownika</title>
+
+
+</h:head>
+<h:body>
+<p:panel id="panel">  
+<p:focus context="panel"/>  
+	<h:form id="forma">
+		
+		<center>
+			<p>Wprowadź kod pracownika</p>
+			<h:inputText id="kod_rcp" text="kod_rcp" name="kod_rcp"
+				value="#{serviceLocator.kod_rcp}" required="true" autocomplete="off" 
+				requiredMessage="Zeskanuj kod RCP" />
+			<p></p>
+			
+			<h:commandButton id="login" value="Login" action="#{serviceLocator.run}" />
+
+		</center>
+		
+		 </h:form>
+		</p:panel> 
+	
+</h:body>
+</html>
