@@ -4,7 +4,7 @@
 <hibernate-configuration>
  <session-factory><!--  name="" -->
   <property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
-  <property name="hibernate.connection.password">max859</property>
+  <property name="hibernate.connection.password">password</property>
   <property name="hibernate.connection.url">jdbc:jtds:sqlserver://192.168.10.16:1433/MAX102PLpo00</property>
   <property name="hibernate.connection.username">maxmast</property>
   <property name="hibernate.default_schema">maxmast</property>

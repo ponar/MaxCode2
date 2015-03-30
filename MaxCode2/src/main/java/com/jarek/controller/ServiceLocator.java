@@ -830,5 +830,6 @@ public class ServiceLocator implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext()
 				.redirect("index.xhtml");
 	}
+	//
 
 }
